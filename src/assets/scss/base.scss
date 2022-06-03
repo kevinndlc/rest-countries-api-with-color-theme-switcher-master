@@ -1,0 +1,95 @@
+:root {
+  --color-white: hsl(0, 0%, 100%);
+  --color-white-soft: hsl(0, 0%, 98%);
+
+  --color-black: hsl(200, 15%, 8%);
+  --color-black-soft: hsl(207, 26%, 17%);
+  --color-black-muted: hsl(209, 23%, 22%);
+
+  --color-divider-light-1: rgba(60, 60, 60, 0.29);
+  --color-divider-light-2: rgba(60, 60, 60, 0.12);
+  --color-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --color-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --color-text-light: var(--color-white);
+  --color-text-dark: var(--color-black);
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--color-white-soft);
+  --color-foreground: var(--color-white);
+
+  --color-border: var(--color-divider-light-2);
+  --color-border-hover: var(--color-divider-light-1);
+
+  --color-text: var(--color-text-dark);
+}
+
+:root.dark {
+  --color-background: var(--color-black-soft);
+  --color-foreground: var(--color-black-muted);
+
+  --color-border: var(--color-divider-dark-2);
+  --color-border-hover: var(--color-divider-dark-1);
+
+  --color-text: var(--color-text-light);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: "Nunito Sans", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+h1, h2 {
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+h3, h4 {
+  font-weight: 600;
+}
