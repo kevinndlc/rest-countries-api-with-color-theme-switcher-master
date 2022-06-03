@@ -1,13 +1,19 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import TheHeader from './components/TheHeader.vue'
+import { RouterView } from 'vue-router';
+import TheHeader from './components/TheHeader.vue';
 </script>
 
 <template>
   <TheHeader />
 
   <main class="main">
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <template v-if="Component">
+        <Suspense>
+          <Component :is="Component" />
+        </Suspense>
+      </template>
+    </RouterView>
   </main>
 </template>
 

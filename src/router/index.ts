@@ -1,20 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/CountriesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      redirect: '/countries',
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
+      path: '/countries',
+      name: 'countries',
+      component: () => import('@/views/CountriesView.vue'),
+    },
+    {
+      path: '/country/:code',
+      name: 'country',
+      component: () => import('@/views/CountryView.vue'),
+    },
+    {
+      path: '/:notfound(.*)*',
+      redirect: '/countries'
     }
-  ]
-})
+  ],
+});
 
 export default router
