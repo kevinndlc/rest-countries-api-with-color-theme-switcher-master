@@ -16,10 +16,19 @@
 </template>
 
 <style scoped lang="scss">
+  @use '@/assets/scss/mixins';
   .country-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
-    padding: 2rem 2.5rem 65px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    padding: 2rem 2.5rem 4rem;
     gap: 2.5rem;
+
+    @include mixins.md {
+      padding: 3rem 1rem 4rem;
+    }
+    @include mixins.lg {
+      padding-inline: 0;
+      gap: 4.625rem;
+    }
   }
 </style>

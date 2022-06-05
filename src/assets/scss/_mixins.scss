@@ -1,5 +1,5 @@
 @mixin md {
-  @media screen and (min-width: 35rem) {
+  @media screen and (min-width: 40rem) {
     @content;
   }
 }

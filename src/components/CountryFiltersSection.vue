@@ -14,17 +14,37 @@ import CountryRegionFilter from './CountryRegionFilter.vue';
 
 <template>
   <div class="filters-wrapper">
-    <CountrySearchBar :search="filters.search" @update-search="emit('updateFilters', { search: $event })" />
+    <CountrySearchBar class="search-bar" :search="filters.search" @update-search="emit('updateFilters', { search: $event })" />
     <CountryRegionFilter class="filter" :region="filters.region" @update-region="emit('updateFilters', { region: $event })" />
   </div>
 </template>
 
 <style scoped lang="scss">
+  @use '@/assets/scss/mixins';
+
   .filters-wrapper {
     margin-top: 1.5rem;
+
+    @include mixins.md {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  .search-bar {
+    @include mixins.md {
+      flex-basis: 30rem;
+    }
   }
 
   .filter {
     margin-top: 2.5rem;
+
+    @include mixins.md {
+      margin-top: 0;
+    }
   }
 </style>

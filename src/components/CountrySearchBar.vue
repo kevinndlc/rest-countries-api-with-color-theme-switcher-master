@@ -23,6 +23,8 @@
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/scss/mixins';
+
 .country__search-bar {
   background-color: var(--color-foreground);
   border-radius: 5px;
@@ -34,11 +36,17 @@
     border: none;
     width: 100%;
     font-size: 0.75rem;
+    line-height: 1.25rem;
     padding-block: 0.875rem;
     padding-left: 4.625rem;
 
+    @include mixins.md {
+      font-size: 0.875rem;
+      padding-block: 1.125rem;
+    }
+
     &::placeholder {
-      color: inherit;
+      color: hsla(0, 0%, 77%, 1);
     }
   }
 
@@ -48,6 +56,14 @@
     top: 50%;
     left: 2rem;
     transform: translateY(-50%);
+
+    @include mixins.md {
+      width: 1.125rem;
+    }
   }
+}
+
+html.dark input::placeholder {
+  color: inherit;
 }
 </style>

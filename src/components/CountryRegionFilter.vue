@@ -60,6 +60,7 @@
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/scss/mixins';
 .country__region-filter {
   position: relative;
   width: max-content;
@@ -73,10 +74,21 @@
     align-items: center;
     justify-content: space-between;
     font-size: 0.75rem;
+    line-height: 1.25rem;
     box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.05);
+
+    @include mixins.md {
+      font-size: 0.875rem;
+      padding-block: 1.125rem;
+    }
 
     svg {
       width: 10px;
+      aspect-ratio: 1;
+
+      @include mixins.md {
+        width: 12px;
+      }
     }
   }
 
@@ -92,11 +104,20 @@
     font-size: 0.75rem;
     z-index: 99;
     box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.05);
+
+    @include mixins.md {
+      font-size: 0.875rem;
+    }
   }
 
   li div {
     padding: 0.25rem 1.5rem;
     cursor: pointer;
+    line-height: 1rem;
+
+    @include mixins.md {
+      line-height: 1.25rem;
+    }
 
     svg {
       display: inline-block;
