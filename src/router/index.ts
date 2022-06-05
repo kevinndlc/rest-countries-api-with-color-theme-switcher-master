@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: '/countries',
       name: 'countries',
-      component: () => import('@/views/CountriesView.vue'),
+      component: HomeView,
     },
     {
       path: '/country/:code',
@@ -20,8 +20,8 @@ const router = createRouter({
     },
     {
       path: '/:notfound(.*)*',
-      redirect: '/countries'
-    }
+      redirect: '/countries',
+    },
   ],
 });
 

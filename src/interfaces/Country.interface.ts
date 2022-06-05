@@ -8,11 +8,11 @@ export interface CountryIntf {
   currencies: any;
   languages: any;
   flags: any;
-  borders: string[];
+  borders?: string[];
   tld: string[];
 }
 
-export interface CountryNameIntf {
+interface CountryNameIntf {
   common: string;
   official: string;
   nativeName: any;

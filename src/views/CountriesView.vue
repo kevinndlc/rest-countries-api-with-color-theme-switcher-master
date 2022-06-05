@@ -1,29 +1,44 @@
 <script setup lang="ts">
-  import type { CountryIntf } from '@/interfaces';
-  import axios from 'axios';
-import { computed } from 'vue';
-  import CountryList from '../components/CountryList.vue';
+import CountryList from '@/components/CountryList.vue';
+import type {
+  CountryFiltersIntf,
+  CountryFiltersUpdateIntf,
+} from '@/interfaces';
+import { computed, reactive } from 'vue';
+import { useTitle } from '@vueuse/core';
+import CountryFiltersSection from '../components/CountryFiltersSection.vue';
+import { useCountries } from '@/composables/countries';
+import Loader from '../components/Loader.vue';
 
-  const countries: CountryIntf[] = (await axios.get('https://restcountries.com/v3.1/all')).data;
-  const germany = countries.find(country => country.name.common === 'Belgium')
+useTitle('Frontend Mentor | REST Countries API');
 
-  const sortedCountries = computed(() => countries.sort((a, b) => b.population - a.population))
+const { countries, isLoaded } = useCountries();
 
-  console.log(germany);
+const filters = reactive<CountryFiltersIntf>({
+  search: '',
+  region: 'all',
+});
+
+function updateFilters(filterUpdate: CountryFiltersUpdateIntf) {
+  if (filterUpdate.search) {
+    filters.search = filterUpdate.search;
+  } else if (filterUpdate.region) {
+    filters.region = filterUpdate.region;
+  }
+}
+const filteredCountries = computed(() => countries.value.filter((country) => {
+  const regionSearch = filters.region === 'all' ? country.region : filters.region === 'America' ? 'Americas' : filters.region;
+  return country.name.common.toLowerCase().includes(filters.search.toLowerCase()) && country.region === regionSearch;
+}).sort((a, b) => b.population - a.population));
 
 </script>
 
 <template>
   <div class="container">
-    <div class="top-bar">
-      <h2>INPUT</h2>
-      <h2>FILTER</h2>
-    </div>
-    
-    <CountryList :countries="sortedCountries" />
+    <Loader class="loader" v-if="!isLoaded"/>
+    <template v-else>
+      <CountryFiltersSection :filters="filters" @update-filters="updateFilters" />
+      <CountryList :countries="filteredCountries" />
+    </template>
   </div>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
