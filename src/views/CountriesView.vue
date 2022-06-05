@@ -20,11 +20,13 @@ const filters = reactive<CountryFiltersIntf>({
 });
 
 function updateFilters(filterUpdate: CountryFiltersUpdateIntf) {
-  if (filterUpdate.search) {
+  if (filterUpdate.search !== undefined) {
     filters.search = filterUpdate.search;
   } else if (filterUpdate.region) {
     filters.region = filterUpdate.region;
   }
+
+  console.log(filters);
 }
 const filteredCountries = computed(() => countries.value.filter((country) => {
   const regionSearch = filters.region === 'all' ? country.region : filters.region === 'America' ? 'Americas' : filters.region;

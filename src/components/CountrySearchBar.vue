@@ -30,6 +30,7 @@
   border-radius: 5px;
   position: relative;
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.05);
+  color: hsl(0, 0%, 52%);
 
   input {
     background-color: transparent;
@@ -46,7 +47,7 @@
     }
 
     &::placeholder {
-      color: hsl(0, 0%, 52%);
+      color: inherit;
     }
   }
 
@@ -63,7 +64,7 @@
   }
 }
 
-html.dark input::placeholder {
+html.dark form {
   color: inherit;
 }
 </style>
