@@ -57,6 +57,7 @@
     top: 50%;
     left: 2rem;
     transform: translateY(-50%);
+    pointer-events: none;
 
     @include mixins.md {
       width: 1.125rem;
