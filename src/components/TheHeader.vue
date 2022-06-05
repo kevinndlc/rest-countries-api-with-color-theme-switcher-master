@@ -25,13 +25,14 @@ import IconMoonOutline from './icons/IconMoonOutline.vue';
 
   .header {
     background-color: var(--color-foreground);
-    padding-block: 1.875rem;
+    height: 5rem;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 
     .container {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      height: 100%;
     }
 
     .logo {

@@ -46,7 +46,7 @@
     }
 
     &::placeholder {
-      color: hsla(0, 0%, 77%, 1);
+      color: hsl(0, 0%, 52%);
     }
   }
 
